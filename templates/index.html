@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <title>Calculator</title>
+    
+    
+</head>
+<body>
+
+    <h1 class="text-center text-danger fw-bold">Simple Calculator</h1>
+    <div class="container bg-light border border-dark w-100 h-100">
+        <div class="row">
+            <div class="col m-3">
+
+        <form  method="POST">
+
+        Number 1:
+        <input type="number" name="num1" placeholder="Enter The 1st Number"><br><br>
+
+        Number 2:
+        <input type="number" name="num2" placeholder="Enter The 2nd Number"><br><br>
+
+        Operations:
+        <select name="operations">
+            <option value="">select the option</option>
+            <option value="add">Addtion (+)</option>
+            <option value="sub">Subtraction (-)</option>
+            <option value="mulit">Multiplication (*)</option>
+            <option value="div">Division (/)</option>
+        </select><br><br>
+
+        <button type="submit">Check</button>
+
+    </form>
+    </div>
+
+        </div>
+    </div>
+
+    <h2 class="text-center text-info fw-bold">Result : {{ result }}</h2>
+
+</body>
+</html>
