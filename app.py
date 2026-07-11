@@ -25,7 +25,7 @@ def calculator():
 
         elif operation == "mul":
             result = num1 * num2
-            symbol = "×"
+            symbol = "*"
 
         elif operation == "div":
             if num2 != 0:
