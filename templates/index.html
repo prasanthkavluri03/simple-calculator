@@ -1,57 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <title>Calculator</title>
-    
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
 
-    <h1 class="text-center text-danger fw-bold">Simple Calculator</h1>
-    <div class="container bg-light border border-dark w-100 h-100">
-        <div class="row">
-            <div class="col m-3">
+<body class="bg-light">
 
-        <form  method="POST">
+<div class="container mt-5">
 
-        Number 1:
-        <input type="number" name="num1" placeholder="Enter The 1st Number"><br><br>
+    <div class="row justify-content-center">
 
-        Number 2:
-        <input type="number" name="num2" placeholder="Enter The 2nd Number"><br><br>
+        <div class="col-md-6">
 
-        Operations:
-        <select name="operations">
-            <option value="">select the option</option>
-            <option value="add">Addtion (+)</option>
-            <option value="sub">Subtraction (-)</option>
-            <option value="mul">Multiplication (*)</option>
-            <option value="div">Division (/)</option>
-        </select><br><br>
+            <div class="card shadow-lg">
 
-        <button type="submit">Check</button>
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>🧮 Simple Calculator</h2>
+                </div>
 
-    </form>
-    </div>
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Number 1</label>
+                            <input
+                                type="number"
+                                step="any"
+                                class="form-control"
+                                name="num1"
+                                placeholder="Enter First Number"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Number 2</label>
+                            <input
+                                type="number"
+                                step="any"
+                                class="form-control"
+                                name="num2"
+                                placeholder="Enter Second Number"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Select Operation</label>
+
+                            <select class="form-select" name="operations" required>
+                                <option value="">Choose Operation</option>
+                                <option value="add">Addition (+)</option>
+                                <option value="sub">Subtraction (-)</option>
+                                <option value="mul">Multiplication (×)</option>
+                                <option value="div">Division (÷)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Calculate
+                        </button>
+
+                    </form>
+
+                    {% if result != "" %}
+                    <div class="alert alert-success mt-4 text-center">
+                        <h4>Result : {{ result }}</h4>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <!-- History -->
+            <div class="card mt-4 shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h4>📜 Calculation History</h4>
+                </div>
+
+                <div class="card-body">
+
+                    {% if history %}
+
+                    <table class="table table-bordered table-hover">
+
+                        <thead class="table-primary">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Calculation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for item in history %}
+
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item }}</td>
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                    {% else %}
+
+                    <p class="text-center text-muted">
+                        No calculations yet.
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
 
         </div>
+
     </div>
 
-    <h2 class="text-center text-info fw-bold">Result : {{ result }}</h2>
+</div>
 
-
-    <h3 class="mt-4">Calculation History</h3>
-    
-    <ul class="list-group">
-        {% for item in history %}
-        
-        <li class="list-group-item">
-            {{ item }}
-        </li>
-        {% endfor %}
-    </ul>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
